@@ -1,4 +1,5 @@
 const express = require("express");
+const mysql = require("mysql2");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
@@ -10,7 +11,6 @@ app.use(bodyParser.json());
 
 // DATABASE CONNECTION
 
-const mysql = require("mysql2");
 require("dotenv").config();
 
 const db = mysql.createConnection({
@@ -25,7 +25,7 @@ db.connect((err) => {
   if (err) {
     console.log("Database connection failed:", err);
   } else {
-    console.log("Railway MySQL Connected");
+    console.log("MySQL Connected Successfully");
   }
 });
 /* =========================
