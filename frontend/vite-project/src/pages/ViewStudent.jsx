@@ -13,7 +13,7 @@ function ViewStudent() {
   useEffect(() => {
 
     axios
-      .get("http://localhost:5000/student/" + id)
+      .get("https://full-stack-deployment-r0fg.onrender.com/student/" + id)
       .then((res) => {
         setData(res.data);
       })
@@ -35,7 +35,7 @@ function ViewStudent() {
 
   const update = async () => {
 
-    await axios.put("http://localhost:5000/student/" + id, data);
+    await axios.put("https://full-stack-deployment-r0fg.onrender.com/student/" + id, data);
 
     alert("Data Updated Successfully");
 
@@ -46,7 +46,7 @@ function ViewStudent() {
 
   const del = async () => {
 
-    await axios.delete("http://localhost:5000/student/" + id);
+    await axios.delete("https://full-stack-deployment-r0fg.onrender.com/student/" + id);
 
     alert("Data Deleted");
 

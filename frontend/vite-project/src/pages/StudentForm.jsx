@@ -20,7 +20,7 @@ function StudentForm() {
 
   const submit = async () => {
 
-    await axios.post("http://localhost:5000/student", {
+    await axios.post("https://full-stack-deployment-r0fg.onrender.com/student", {
       user_id: id,
       ...data
     });

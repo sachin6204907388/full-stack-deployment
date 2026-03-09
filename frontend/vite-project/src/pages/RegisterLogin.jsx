@@ -28,7 +28,7 @@ function RegisterLogin() {
 
   const register = async () => {
 
-    const res = await axios.post("http://localhost:5000/register", data);
+    const res = await axios.post("https://full-stack-deployment-r0fg.onrender.com/register", data);
 
     alert(res.data.message);
 
@@ -41,7 +41,7 @@ function RegisterLogin() {
 
   const login = async () => {
 
-    const res = await axios.post("http://localhost:5000/login", {
+    const res = await axios.post("https://full-stack-deployment-r0fg.onrender.com/login", {
       email: data.email,
       password: data.password
     });
