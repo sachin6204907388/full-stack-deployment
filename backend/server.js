@@ -1,17 +1,16 @@
 const express = require("express");
 const mysql = require("mysql2");
 const cors = require("cors");
-const bodyParser = require("body-parser");
+require("dotenv").config();
 
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
-
-// DATABASE CONNECTION
-
-require("dotenv").config();
+/* =========================
+   DATABASE CONNECTION
+========================= */
 
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -28,6 +27,15 @@ db.connect((err) => {
     console.log("MySQL Connected Successfully");
   }
 });
+
+/* =========================
+   TEST ROUTE
+========================= */
+
+app.get("/", (req, res) => {
+  res.send("Backend API Running Successfully");
+});
+
 /* =========================
    REGISTER USER
 ========================= */
@@ -43,7 +51,7 @@ app.post("/register", (req, res) => {
 
     if (err) {
       console.log(err);
-      res.send(err);
+      res.status(500).send(err);
     } else {
       res.send({
         message: "Registered Successfully",
@@ -54,8 +62,6 @@ app.post("/register", (req, res) => {
   });
 
 });
-
-
 
 /* =========================
    LOGIN USER
@@ -71,7 +77,7 @@ app.post("/login", (req, res) => {
 
     if (err) {
       console.log(err);
-      res.send(err);
+      res.status(500).send(err);
     } else {
 
       if (result.length > 0) {
@@ -85,8 +91,6 @@ app.post("/login", (req, res) => {
   });
 
 });
-
-
 
 /* =========================
    SUBMIT STUDENT FORM
@@ -103,7 +107,7 @@ app.post("/student", (req, res) => {
 
     if (err) {
       console.log(err);
-      res.send(err);
+      res.status(500).send(err);
     } else {
       res.send({ message: "Form Submitted Successfully" });
     }
@@ -111,8 +115,6 @@ app.post("/student", (req, res) => {
   });
 
 });
-
-
 
 /* =========================
    GET STUDENT DETAILS
@@ -134,7 +136,7 @@ app.get("/student/:id", (req, res) => {
 
     if (err) {
       console.log(err);
-      res.send(err);
+      res.status(500).send(err);
     } else {
       res.send(result[0]);
     }
@@ -142,8 +144,6 @@ app.get("/student/:id", (req, res) => {
   });
 
 });
-
-
 
 /* =========================
    UPDATE STUDENT FORM
@@ -153,7 +153,7 @@ app.put("/student/:id", (req, res) => {
 
   let { course, stream, dob, location } = req.body;
 
-  // Fix date format
+  // Fix MySQL date format
   dob = dob ? dob.split("T")[0] : null;
 
   const sql =
@@ -166,7 +166,7 @@ app.put("/student/:id", (req, res) => {
 
       if (err) {
         console.log(err);
-        res.send(err);
+        res.status(500).send(err);
       } else {
         res.send({ message: "Updated Successfully" });
       }
@@ -177,7 +177,7 @@ app.put("/student/:id", (req, res) => {
 });
 
 /* =========================
-   DELETE STUDENT FORM
+   DELETE STUDENT
 ========================= */
 
 app.delete("/student/:id", (req, res) => {
@@ -188,7 +188,7 @@ app.delete("/student/:id", (req, res) => {
 
     if (err) {
       console.log(err);
-      res.send(err);
+      res.status(500).send(err);
     } else {
       res.send({ message: "Deleted Successfully" });
     }
@@ -196,8 +196,6 @@ app.delete("/student/:id", (req, res) => {
   });
 
 });
-
-
 
 /* =========================
    START SERVER
@@ -207,4 +205,4 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-});
+}); /// sachin kumar 
