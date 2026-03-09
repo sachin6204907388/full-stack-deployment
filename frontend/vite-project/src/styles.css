@@ -1,0 +1,99 @@
+/* Reset */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Center whole page */
+
+body{
+  background:#f4f6f9;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* Form container */
+
+.container{
+  width:400px;
+  background:white;
+  padding:30px;
+  border-radius:10px;
+  box-shadow:0 0 15px rgba(0,0,0,0.1);
+  text-align:center;
+}
+
+/* Heading */
+
+.container h2{
+  margin-bottom:20px;
+  color:#333;
+}
+
+/* Inputs */
+
+.container input{
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+  border-radius:5px;
+  border:1px solid #ccc;
+  font-size:14px;
+}
+
+/* Buttons */
+
+.container button{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  border:none;
+  border-radius:5px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+/* Register Button */
+
+.register-btn{
+  background:#28a745;
+  color:white;
+}
+
+/* Login Button */
+
+.login-btn{
+  background:#007bff;
+  color:white;
+}
+
+/* Submit Button */
+
+.submit-btn{
+  background:#17a2b8;
+  color:white;
+}
+
+/* Edit Button */
+
+.edit-btn{
+  background:#ffc107;
+}
+
+/* Delete Button */
+
+.delete-btn{
+  background:#dc3545;
+  color:white;
+}
+
+/* Button hover */
+
+button:hover{
+  opacity:0.9;
+}
